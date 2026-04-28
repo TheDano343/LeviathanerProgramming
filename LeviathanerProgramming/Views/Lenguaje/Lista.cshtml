@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Lista de Lenguaje";
+}
+
+@model List<LeviathanerProgramming.Models.Lenguaje>;
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        @if (TempData["Exito"] != null)
+        {
+            <div id="mensaje-exito" class="alert alert-success">
+                @TempData["Exito"]
+            </div>
+        }
+
+        @if (TempData["Actualizado"] != null)
+        {
+            <div id="mensaje-editado" class="alert alert-primary">
+                @TempData["Actualizado"]
+            </div>
+        }
+
+        @if (TempData["Eliminado"] != null)
+        {
+            <div id="mensaje-editado" class="alert alert-danger">
+                @TempData["Eliminado"]
+            </div>
+        }
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-header">
+                    <h4>
+                        Lenguaje
+                        <a class="btn btn-primary float-end" asp-controller="Lenguaje" asp-action="Nuevo">Agregar un Lenguaje de Programación</a>
+                    </h4>
+                </div>
+
+
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>IdLenguaje</th>
+                            <th>Nombre de Lenguaje de Programación</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdLenguaje</td>
+                                <td>@item.NombreLenguaje</td>
+
+                                <td>
+                                    <a class="btn btn-warning" asp-controller="Lenguaje" asp-action="Editar" asp-route-IdLenguaje="@item.IdLenguaje">Editar</a>
+                                    <a class="btn btn-danger" asp-controller="Lenguaje" asp-action="Eliminar" asp-route-IdLenguaje="@item.IdLenguaje" type="submit">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/desaparecerFlash.js"></script>
+
+</body>
+
+</html>

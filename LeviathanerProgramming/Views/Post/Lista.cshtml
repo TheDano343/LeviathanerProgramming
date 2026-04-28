@@ -1,0 +1,87 @@
+﻿@model List<LeviathanerProgramming.Models.Post>
+@{
+    ViewData["Title"] = "Lista de Post";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Exito"]
+    </div>
+}
+
+@if (TempData["Actualizado"] != null)
+{
+    <div class="alert alert-primary">
+        @TempData["Actualizado"]
+    </div>
+}
+
+@if (TempData["Eliminado"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Eliminado"]
+    </div>
+}
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-header">
+                    <h4>
+                        Post
+                        <a class="btn btn-primary float-end" asp-controller="Post" asp-action="Nuevo">Agregar un Post</a>
+                    </h4>
+                </div>
+
+
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>IdPost</th>
+                            <th>Titulo</th>
+                            <th>Descripcion</th>
+                            <th>Nivel Dificultad</th>
+                            <th>RoadMap</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdPost</td>
+                                <td>@item.Titulo</td>
+                                <td>@item.Descripcion</td>
+                                <td>@item.ListaDificultad.NombreDificultad</td>
+                                <td>@item.ListaRoadMap.Titulo</td>
+
+                                <td>
+                                    <a class="btn btn-warning" asp-controller="Post" asp-action="Editar" asp-route-IdPost="@item.IdPost">Editar</a>
+                                    <a class="btn btn-danger" asp-controller="Post" asp-action="Eliminar" asp-route-IdPost="@item.IdPost" type="submit">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+
+</body>
+
+</html>

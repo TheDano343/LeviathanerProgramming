@@ -1,0 +1,83 @@
+﻿@model List<LeviathanerProgramming.Models.TipoRutaAprendizaje>
+@{
+    ViewData["Title"] = "Lista de Tipo Ruta Aprendizaje";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Exito"]
+    </div>
+}
+
+@if (TempData["Actualizado"] != null)
+{
+    <div class="alert alert-primary">
+        @TempData["Actualizado"]
+    </div>
+}
+
+@if (TempData["Eliminado"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Eliminado"]
+    </div>
+}
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-header">
+                    <h4>
+                        Tipo Ruta Aprendizaje
+                        <a class="btn btn-primary float-end" asp-controller="TipoRutaAprendizaje" asp-action="Nuevo">Agregar un Tipo Ruta Aprendizaje</a>
+                    </h4>
+                </div>
+
+
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>IdRutaAprendizaje</th>
+                            <th>Nombre Tipo Aprendizaje</th>
+                            <th>RoadMap</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdRutaAprendizaje</td>
+                                <td>@item.NombreTipoAprenidzaje</td>
+                                <td>@item.ListaRoadMap.Titulo</td>
+
+
+                                <td>
+                                    <a class="btn btn-warning" asp-controller="TipoRutaAprendizaje" asp-action="Editar" asp-route-IdRutaAprendizaje="@item.IdRutaAprendizaje">Editar</a>
+                                    <a class="btn btn-danger" asp-controller="TipoRutaAprendizaje" asp-action="Eliminar" asp-route-IdRutaAprendizaje="@item.IdRutaAprendizaje" type="submit">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

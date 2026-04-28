@@ -1,0 +1,87 @@
+﻿@model List<LeviathanerProgramming.Models.RoadMap>
+@{
+    ViewData["Title"] = "Lista de Personas";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Exito"]
+    </div>
+}
+
+@if (TempData["Actualizado"] != null)
+{
+    <div class="alert alert-primary">
+        @TempData["Actualizado"]
+    </div>
+}
+
+@if (TempData["Eliminado"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Eliminado"]
+    </div>
+}
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-header">
+                    <h4>
+                        RoadMap
+                        <a class="btn btn-primary float-end" asp-controller="RoadMap" asp-action="Nuevo">Agregar un RoadMap</a>
+                    </h4>
+                </div>
+
+
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>IdRoadMap</th>
+                            <th>Titulo</th>
+                            <th>Descripcion</th>
+                            <th>Lenguaje de Programacion</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdRoadMap</td>
+                                <td>@item.Titulo</td>
+                                <td>@item.Descripcion</td>
+                                <td>@item.ListaLenguaje.NombreLenguaje</td>
+
+
+                                <td>
+                                    <a class="btn btn-warning" asp-controller="RoadMap" asp-action="Editar" asp-route-IdRoadMap="@item.IdRoadMap">Editar</a>
+                                    <a class="btn btn-danger" asp-controller="RoadMap" asp-action="Eliminar" asp-route-IdRoadMap="@item.IdRoadMap" type="submit">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model LeviathanerProgramming.Models.Lenguaje;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>
+                            Editar un Lenguaje de Programación
+                            <a class="btn btn-danger float-end" asp-controller="Lenguaje" asp-action="Lista">Regresar</a>
+                        </h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-controller="Lenguaje" asp-action="Editar" method="post">
+                            <input asp-for="IdLenguaje" type="hidden" />
+
+
+                            <div class="mb-3">
+                                <label>Nombre de Lenguaje de Programación</label>
+                                <input class="form-control" type="text" asp-for="NombreLenguaje">
+                                <span asp-validation-for="NombreLenguaje"></span>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Actualizar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

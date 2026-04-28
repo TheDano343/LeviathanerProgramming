@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model LeviathanerProgramming.Models.ViewModels.ListaVM;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>
+                            Editar un RoadMap
+                            <a class="btn btn-danger float-end" asp-controller="RoadMap" asp-action="Lista">Regresar</a>
+                        </h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-controller="RoadMap" asp-action="Editar" method="post">
+                            <input asp-for="oRoadMap.IdRoadMap" type="hidden" />
+
+
+                            <div class="mb-3">
+                                <label>Titulo</label>
+                                <input class="form-control" type="text" asp-for="oRoadMap.Titulo">
+                                <span asp-validation-for="oRoadMap.Titulo"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Descripcion</label>
+                                <textarea class="form-control" type="text" asp-for="oRoadMap.Descripcion"></textarea>
+                                <span asp-validation-for="oRoadMap.Descripcion"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Lista Lenguaje</label>
+                                <select class="form-control" asp-for="oRoadMap.Lenguaje_Programacion_Id" asp-items="@Model.oListaLenguaje">
+                                    <option selected disabled>-- Seleccionar --</option>
+                                </select>
+                                <span asp-validation-for="oRoadMap.Lenguaje_Programacion_Id"></span>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Actualizar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

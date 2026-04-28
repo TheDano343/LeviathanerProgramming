@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model LeviathanerProgramming.Models.NivelDificultad;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>
+                            Agregar un Nivel Dificultad
+                            <a class="btn btn-danger float-end" asp-controller="NivelDificultad" asp-action="Lista">Regresar</a>
+                        </h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-controller="NivelDificultad" asp-action="Nuevo" method="post">
+
+                            <div class="mb-3">
+                                <label>Nombre de Dificultad</label>
+                                <input class="form-control" type="text" asp-for="NombreDificultad">
+                                <span asp-validation-for="NombreDificultad"></span>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Crear</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

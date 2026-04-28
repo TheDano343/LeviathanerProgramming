@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Lista de Nivel Dificultad";
+}
+
+@model List<LeviathanerProgramming.Models.NivelDificultad>;
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        @if (TempData["Exito"] != null)
+        {
+            <div id="mensaje-exito" class="alert alert-success">
+                @TempData["Exito"]
+            </div>
+        }
+
+        @if (TempData["Actualizado"] != null)
+        {
+            <div id="mensaje-editado" class="alert alert-primary">
+                @TempData["Actualizado"]
+            </div>
+        }
+
+        @if (TempData["Eliminado"] != null)
+        {
+            <div id="mensaje-editado" class="alert alert-danger">
+                @TempData["Eliminado"]
+            </div>
+        }
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-header">
+                    <h4>
+                        Nivel Dificultad
+                        <a class="btn btn-primary float-end" asp-controller="NivelDificultad" asp-action="Nuevo">Agregar un Nivel Dificultad</a>
+                    </h4>
+                </div>
+
+
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>IdNivelDificultad</th>
+                            <th>Nombre Dificultad</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IdNivelDificultad</td>
+                                <td>@item.NombreDificultad</td>
+
+                                <td>
+                                    <a class="btn btn-warning" asp-controller="NivelDificultad" asp-action="Editar" asp-route-IdNivelDificultad="@item.IdNivelDificultad">Editar</a>
+                                    <a class="btn btn-danger" asp-controller="NivelDificultad" asp-action="Eliminar" asp-route-IdNivelDificultad="@item.IdNivelDificultad" type="submit">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/desaparecerFlash.js"></script>
+
+</body>
+
+</html>

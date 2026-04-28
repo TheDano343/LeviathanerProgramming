@@ -1,0 +1,73 @@
+﻿@model LeviathanerProgramming.Models.ViewModels.ListaVM;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>
+                            Crear una RoadMap
+                            <a class="btn btn-danger float-end" asp-controller="Post" asp-action="Lista">Regresar</a>
+                        </h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-controller="Post" asp-action="Nuevo" method="post">
+                            <input asp-for="oPost.IdPost" type="hidden" />
+
+
+                            <div class="mb-3">
+                                <label>Titulo</label>
+                                <input class="form-control" type="text" asp-for="oPost.Titulo">
+                                <span asp-validation-for="oPost.Titulo"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Descripcion</label>
+                                <textarea class="form-control" type="text" asp-for="oPost.Descripcion"></textarea>
+                                <span asp-validation-for="oPost.Descripcion"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Nivel Dificultad</label>
+                                <select class="form-control" asp-for="oPost.Nivel_Dificiltad_Id" asp-items="@Model.oListaNivelDificultad">
+                                    <option selected disabled>-- Seleccionar --</option>
+                                </select>
+                                <span asp-validation-for="oPost.Nivel_Dificiltad_Id"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>RoadMap</label>
+                                <select class="form-control" asp-for="oPost.Road_Map_Id" asp-items="@Model.oListaRoadMap">
+                                    <option selected disabled>-- Seleccionar --</option>
+                                </select>
+                                <span asp-validation-for="oPost.Road_Map_Id"></span>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Crear</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
